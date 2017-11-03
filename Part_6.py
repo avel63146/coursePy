@@ -1,5 +1,4 @@
 import re
-import codecs
 import binascii
 mystery = '\U0001f4a9'
 print(mystery)
@@ -71,3 +70,6 @@ print(re.findall(r'\w+[AEIOUaeiou][AEIOUaeiou][AEIOUaeiou]\w+', mamoth))
 
 gif = binascii.unhexlify('47494638396101000100800000000000ffffff21f9'+'0401000000002c000000000100010000020144003b')
 print(gif)
+import struct
+width, height = struct.unpack('<HH', gif[6:10])
+print(width, height)
