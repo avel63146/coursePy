@@ -1,5 +1,6 @@
 import csv
 import sqlite3 as sq
+import sqlalchemy
 test1 = 'This is a test of the emergency text system'
 with open('test_Part_7.txt', 'wt') as outfile:
     outfile.write(test1)
@@ -36,4 +37,16 @@ with open('books.csv', 'rt') as infile:
 
 sql = 'SELECT author FROM book ORDER BY author ASC'
 for row in db.execute(sql):
+    print(*row, sep='')
+
+for row in db.execute('SELECT * FROM book ORDER BY year'):
+    print(*row, sep=', ')
+
+print('_____________________________________________________')
+conn = sqlalchemy.create_engine('sqlite:///books.db')
+sql = 'SELECT title FROM book ORDER BY title ASC'
+rows = conn.execute(sql)
+for row in rows:
     print(row)
+
+#REDIS NOT FOUND no 11 12
